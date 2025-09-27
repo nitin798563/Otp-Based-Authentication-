@@ -59,8 +59,8 @@ backend/ │── main.py          # Entry point<
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/yourusername/fastapi-auth-backend.git
-cd fastapi-auth-backend
+git clone https://github.com/nitin798563/Otp-Based-Authentication-.git
+cd Otp-Based-Authentication
 
 2. Create Virtual Environment
 
@@ -155,7 +155,7 @@ OTP is sent to Email or Mobile
 
 After trial:
 
-> "Due to budget issue, you cannot register with mobile no 😅"
+> "Due to budget issue, you cannot register with mobile no "
 
 
 
