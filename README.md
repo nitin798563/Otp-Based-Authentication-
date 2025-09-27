@@ -33,7 +33,7 @@ It supports **Registration, OTP Verification, Login, and Password Reset**.
 
 ## 🛠 Tech Stack
 
-- **Backend**: FastAPI + SQLAlchemy  
+- **Backend**: FastAPI, SQLAlchemy, Pydantic  
 - **Database**: MySQL  
 - **OTP Services**:  
   - 📧 Email → Free (via Gmail SMTP)  
@@ -43,7 +43,15 @@ It supports **Registration, OTP Verification, Login, and Password Reset**.
 
 ## 📂 Project Structure
 
-backend/ │── main.py          # Entry point │── auth.py          # Auth routes (register, login, otp, reset) │── database.py      # Database connection │── models.py        # SQLAlchemy models │── schemas.py       # Pydantic schemas │── utils.py         # Helper functions (OTP, hashing, email, sms) │── create_tables.py # Create tables │── .env             # Environment variables │── requirements.txt # Dependencies
+backend/ │── main.py          # Entry point<
+         │── auth.py          # Auth routes (register, login, otp, reset)
+         │── database.py      # Database connection 
+         │── models.py        # SQLAlchemy models 
+         │── schemas.py       # Pydantic schemas 
+         │── utils.py         # Helper functions (OTP, hashing, email, sms) 
+         │── create_tables.py # Create tables 
+         │── .env             # Environment variables 
+         │── requirements.txt # Dependencies
 
 ---
 
