@@ -1,132 +1,155 @@
-# Otp-Based-Authentication-
-Otp Based Authentication by Email And Mobile Number Using FastApi 
-FastAPI Authentication System (Backend Only)
+# 🔐 FastAPI Authentication System (Backend Only)
 
-This is a complete Authentication System built with FastAPI + MySQL.
-It allows user Registration (Email / Mobile / Both), OTP Verification, Login, and Password Reset.
-
+This project is a **User Authentication System** built with **FastAPI + MySQL**.  
+It supports **Registration, OTP Verification, Login, and Password Reset**.  
 
 ---
 
-Features
+## ✨ Features
 
-Register with Email, Mobile number, or both
+- **Register**  
+  - With Email  
+  - With Mobile Number  
+  - Or with both  
 
-Verify account with OTP (sent to Email / Mobile)
+- **Verify Account**  
+  - OTP sent to Email or Mobile  
 
-Login with username, email, or mobile number + password
+- **Login**  
+  - Using Username  
+  - Or Email  
+  - Or Mobile Number  
+  - With Password  
 
-Forgot password → reset using OTP
+- **Forgot Password**  
+  - Receive OTP for reset  
+  - Set new password  
 
-If mobile OTP service (Twilio / Fast2SMS) trial ends → show message:
-"Due to budget issue, you cannot register with mobile no 😅"
-
-
-
----
-
-Tech Stack
-
-Backend: FastAPI, SQLAlchemy, MySQL
-
-Database: MySQL
-
-OTP:
-
-Email → Free (via Gmail SMTP)
-
-Mobile → Twilio / Fast2SMS (free trial, then paid)
-
-
-
+- **Free Fallback**  
+  - If SMS OTP trial ends → system shows:  
+    > "Due to end of trail, you cannot register with mobile no "  
 
 ---
 
-Project Structure
+## 🛠 Tech Stack
 
-backend/
-│── main.py          # Entry point
-│── auth.py          # Auth routes (register, login, otp, reset)
-│── database.py      # Database connection
-│── models.py        # SQLAlchemy models
-│── schemas.py       # Pydantic schemas
-│── utils.py         # Helper functions (OTP, hashing, email, sms)
-│── create_tables.py # Create tables
-│── .env             # Environment variables
-│── requirements.txt # Dependencies
-
+- **Backend**: FastAPI + SQLAlchemy  
+- **Database**: MySQL  
+- **OTP Services**:  
+  - 📧 Email → Free (via Gmail SMTP)  
+  - 📱 Mobile → Twilio / Fast2SMS (free trial, then paid)  
 
 ---
 
-Setup Instructions
+## 📂 Project Structure
 
-1. Clone the repo
+backend/ │── main.py          # Entry point │── auth.py          # Auth routes (register, login, otp, reset) │── database.py      # Database connection │── models.py        # SQLAlchemy models │── schemas.py       # Pydantic schemas │── utils.py         # Helper functions (OTP, hashing, email, sms) │── create_tables.py # Create tables │── .env             # Environment variables │── requirements.txt # Dependencies
 
+---
+
+## ⚙️ Setup Instructions
+
+### 1. Clone the Repository
+```bash
 git clone https://github.com/yourusername/fastapi-auth-backend.git
 cd fastapi-auth-backend
 
-2. Create virtual environment
+2. Create Virtual Environment
 
 python -m venv venv
 source venv/bin/activate   # Mac/Linux
 venv\Scripts\activate      # Windows
 
-3. Install dependencies
+3. Install Dependencies
 
 pip install -r requirements.txt
 
-4. Create .env file
+4. Configure Environment Variables
+
+Create a .env file in backend/:
 
 DATABASE_URL=mysql+mysqlconnector://root:password@localhost/authdb
 SECRET_KEY=your_jwt_secret
+
+# Email OTP (free)
 EMAIL_HOST=smtp.gmail.com
 EMAIL_PORT=587
 EMAIL_USER=your_email@gmail.com
 EMAIL_PASS=your_app_password
+
+# Mobile OTP (Twilio / Fast2SMS)
 TWILIO_SID=your_twilio_sid
 TWILIO_AUTH=your_twilio_auth
 TWILIO_PHONE=+1234567890
 
-5. Create database tables
+5. Create Database Tables
 
 python create_tables.py
 
-6. Run the backend
+6. Run the Backend
 
 uvicorn main:app --reload
 
 
 ---
 
-API Endpoints
+📡 API Endpoints
 
-POST /register → Register new user
+🔹 Register
 
-POST /verify-otp → Verify OTP and activate account
+POST /register
+Registers a new user with Email / Mobile / Both
 
-POST /login → Login with username/email/phone + password
+🔹 Verify OTP
 
-POST /forgot-password → Send OTP for reset password
+POST /verify-otp
+Verify OTP and activate user account
 
-POST /reset-password → Set new password
+🔹 Login
+
+POST /login
+Login with username, email, or mobile number + password
+
+🔹 Forgot Password
+
+POST /forgot-password
+Send OTP to reset password
+
+🔹 Reset Password
+
+POST /reset-password
+Set a new password after OTP verification
+
+
+---
+
+🧪 OTP Handling
+
+Development Mode
+
+OTP is printed in the console
+
+Saved in the database
+
+
+Production Mode
+
+OTP is sent to Email or Mobile
+
 
 
 
 ---
 
-OTP Testing
+⚠️ Notes
 
-In development → OTP will be printed in console and stored in database
+📱 Mobile OTP → free only during Twilio/Fast2SMS trial
 
-In production → OTP will be sent to Email / Mobile
+After trial:
+
+> "Due to budget issue, you cannot register with mobile no 😅"
 
 
 
----
 
-Notes
-
-Mobile OTP is free only during Twilio/Fast2SMS trial. After trial ends, users will see:
-"Due to budget issue, you cannot register with mobile no 😅"
-
-Email OTP is always free.
+📧 Email OTP → always free & unlimited
